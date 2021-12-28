@@ -1,35 +1,36 @@
-
 const fs = require('fs')
 const consolidate = require('consolidate')
 const genFont = require('./genFont')
 
 const writeFile = (path, file, content) => {
   if (!fs.existsSync(path)) {
-    fs.mkdirSync(path, { recursive: true })
+    fs.mkdirSync(path, {
+      recursive: true
+    })
   }
   fs.writeFile(`${path}/${file}`, content, {
     flag: 'w'
   }, (err) => {
     if (err) throw err;
-  }) 
+  })
 }
 
 const renderCss = (options) => {
   consolidate.lodash('template/styles.css', {
-   ...options
-  }, function(err, content){
+    ...options
+  }, function (err, content) {
     if (err) throw err;
-    const filepath = `${options.fontPath}/style/` 
+    const filepath = `${options.fontPath}/style/`
     writeFile(filepath, 'icon.css', content);
   })
 }
 
 const renderHtml = (options) => {
   consolidate.lodash('template/example.html', {
-   ...options
-  }, function(err, content){
+    ...options
+  }, function (err, content) {
     if (err) throw err;
-    const filepath = `${options.fontPath}/` 
+    const filepath = `${options.fontPath}/`
     writeFile(filepath, 'index.html', content);
   })
 }
@@ -43,7 +44,7 @@ function svg2Font(options) {
   options.className = options.className || 'icon'
   options.fontPath = options.fontPath || 'font'
 
-  options.callback = function(glyphs) {
+  options.callback = function (glyphs) {
     renderCss({
       glyphs,
       fontName: options.fontName,
@@ -58,7 +59,10 @@ function svg2Font(options) {
     })
   }
   genFont(options).then((data) => {
-    data.forEach(({type, result }) => {
+    data.forEach(({
+      type,
+      result
+    }) => {
       writeFile(`${options.fontPath}/`, `${options.fontName}.${type}`, result)
     })
   })
