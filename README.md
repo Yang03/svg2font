@@ -1,24 +1,31 @@
 ### svg2font
 
 ```
-  npm install svg2font --g
+  npm install webfonts-helper --g
 ```
 
 ### js
 ```
-  const svg2font = require('svg2font')
-  svg2font(options)
+  const webFontsHelper = require('webfonts-helper')
+  webFontsHelper(options)
 ```
 
 ### command
 
 ```
-  svg2font
+  webFontsHelper
 ```
 
+### feature
+
++ [x] support svg to 'ttf', 'woff', 'woff2', 'eot'
++ [ ] support ttf to 'woff', 'woff2', 'eot'
 ### options
 
 |  props  | defaultValue |  description  |
 | :---- | :------ | :---- |
-| src | '' | svg dir |
-| formats | ['svg', 'ttf', 'woff', 'woff2', 'eot'] | font type|
+| src | - | svg dir |
+| formats | ['svg', 'ttf', 'woff', 'woff2', 'eot'] | font type |
+| fontName | icon-font | font family name you want |
+| fontPath | - | font family dest|
+| className | icon | css className|

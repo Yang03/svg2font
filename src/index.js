@@ -35,7 +35,7 @@ const renderHtml = (options) => {
   })
 }
 
-function svg2Font(options) {
+function webFontsHelper(options) {
   options.startUnicode = options.startUnicode || 0xea01
   options.prependUnicode = !!options.prependUnicode
   options.formats = options.formats || ['svg', 'ttf', 'woff', 'woff2', 'eot']
@@ -43,6 +43,7 @@ function svg2Font(options) {
   options.timestamp = options.timestamp || Math.round(Date.now() / 1000)
   options.className = options.className || 'icon'
   options.fontPath = options.fontPath || 'font'
+  options.fontName = options.fontName || 'icon-font'
 
   options.callback = function (glyphs) {
     renderCss({
@@ -68,10 +69,4 @@ function svg2Font(options) {
   })
 }
 
-
-svg2Font({
-  src: 'svg/*.svg',
-  fontName: 'zaicon',
-  fontPath: 'font',
-  className: 'za-icon'
-})
+export default webFontsHelper

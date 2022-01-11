@@ -1,36 +1,37 @@
 {
-  "name": "svg2font",
-  "version": "1.0.0",
+  "name": "webfonts-helper",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "bin": {
-    "svg2font": "./bin/svg2font.js"
+    "webFontsHelper": "./bin/webfonts.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Yang03/svg2font.git"
+    "url": "git+https://github.com/Yang03/webfonts-helper.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Yang03/svg2font/issues"
+    "url": "https://github.com/Yang03/webfonts-helper/issues"
   },
-  "homepage": "https://github.com/Yang03/svg2font#readme",
+  "homepage": "https://github.com/Yang03/webfonts-helper#readme",
   "dependencies": {
     "commander": "^8.3.0",
     "consolidate": "^0.16.0",
-    "lodash": "^4.17.21"
-  },
-  "devDependencies": {
+    "lodash": "^4.17.21",
     "glob": "^7.2.0",
     "svg2ttf": "^6.0.3",
     "svgicons2svgfont": "^10.0.5",
     "ttf2eot": "^3.0.0",
     "ttf2woff": "^3.0.0",
     "ttf2woff2": "^4.0.4"
+  },
+  "devDependencies": {
+    
   },
   "engines": {
     "node": ">=14.15.0"
