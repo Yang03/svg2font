@@ -1,6 +1,7 @@
 const fs = require('fs')
 const consolidate = require('consolidate')
 const genFont = require('./genFont')
+const path = require('path')
 
 const writeFile = (path, file, content) => {
   if (!fs.existsSync(path)) {
@@ -16,7 +17,7 @@ const writeFile = (path, file, content) => {
 }
 
 const renderCss = (options) => {
-  consolidate.lodash('template/styles.css', {
+  consolidate.lodash(path.join(__dirname, '../template/styles.css'), {
     ...options
   }, function (err, content) {
     if (err) throw err;
@@ -26,7 +27,7 @@ const renderCss = (options) => {
 }
 
 const renderHtml = (options) => {
-  consolidate.lodash('template/example.html', {
+  consolidate.lodash(path.join(__dirname, '../template/example.html'), {
     ...options
   }, function (err, content) {
     if (err) throw err;
@@ -44,7 +45,7 @@ function webFontsHelper(options) {
   options.className = options.className || 'icon'
   options.fontPath = options.fontPath || 'font'
   options.fontName = options.fontName || 'icon-font'
-
+  console.error(options.src)
   options.callback = function (glyphs) {
     renderCss({
       glyphs,
@@ -69,4 +70,6 @@ function webFontsHelper(options) {
   })
 }
 
-export default webFontsHelper
+
+module.exports = webFontsHelper
+// export default webFontsHelper
